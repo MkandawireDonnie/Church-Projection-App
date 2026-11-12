@@ -1,0 +1,25 @@
+{
+  "name": "church-projector",
+  "version": "1.0.0",
+  "description": "Church projection app: lyrics, Bible, documents, presentations and service planning with dual-screen output",
+  "main": "main.js",
+  "author": "Church Projector",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/test.js",
+    "dist:linux": "electron-builder --linux AppImage deb --publish never",
+    "dist:win": "electron-builder --win nsis --publish never",
+    "dist": "electron-builder --publish never"
+  },
+  "dependencies": { "mammoth": "^1.8.0", "pdf-parse": "1.1.1" },
+  "devDependencies": { "electron": "^33.2.0", "electron-builder": "^25.1.8" },
+  "build": {
+    "appId": "org.church.projector",
+    "productName": "Church Projector",
+    "files": ["main.js", "preload.js", "lib.js", "renderer/**/*", "build/**/*"],
+    "linux": { "target": ["AppImage", "deb"], "category": "Office", "maintainer": "Church Projector <admin@example.org>" },
+    "win": { "target": "nsis" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  }
+}
